@@ -22,23 +22,28 @@ applyBtn.addEventListener("click", () => {
 
 // 2. Nút play
 playBtn.addEventListener("click", () => {
-    interval = setInterval(function () {
-        if (currentValue <= endValue) {
-            displayNumber.innerHTML = currentValue;
-            currentValue++;
-        } else {
-            clearInterval(interval);
-        }
-    }, 1500);
+    if (!interval) {
+        interval = setInterval(function () {
+            if (currentValue <= endValue) {
+                displayNumber.innerHTML = currentValue;
+                currentValue++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 1500);
+    }
 });
 
 // 3. Nút restart
 restartBtn.addEventListener("click", () => {
+    clearInterval(interval);
     currentValue = startValue;
     displayNumber.innerHTML = startValue;
+    interval = undefined;
 });
 
 // 4. Nút pause
 pauseBtn.addEventListener("click", () => {
     clearInterval(interval);
+    interval = undefined;
 });
