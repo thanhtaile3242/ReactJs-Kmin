@@ -2,8 +2,6 @@ import "./Num.scss";
 import { useState } from "react";
 const NumberContent = (props) => {
     const value = props.number;
-
-    console.log(value);
     return (
         <>
             <div style={{ fontWeight: "bold" }}>
